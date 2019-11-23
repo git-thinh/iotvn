@@ -129,10 +129,14 @@
     <Compile Include="Core\TcpServer\Models\HttpResponse.cs" />
     <Compile Include="Core\TcpServer\Models\Route.cs" />
     <Compile Include="Core\TcpServer\RouteHandlers\FileSystemRouteHandler.cs" />
+    <Compile Include="Core\TcpServer\_Test\test1.cs" />
+    <Compile Include="Core\TcpServer\_Test\test2.cs" />
     <Compile Include="MSG_TYPE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DLL\Newtonsoft.Json.dll" />
   </ItemGroup>
