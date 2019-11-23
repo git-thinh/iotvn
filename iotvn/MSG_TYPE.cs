@@ -4,10 +4,7 @@ using System.Text;
 
 namespace iotvn
 {
-    class Program
+    public enum MSG_TYPE
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

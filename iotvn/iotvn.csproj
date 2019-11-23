@@ -17,8 +17,8 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>..\..\release\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET20</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -32,13 +32,114 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>DLL\log4net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="Core\ConcurrentDictionary\System\ArrayHelper.cs" />
+    <Compile Include="Core\ConcurrentDictionary\System\Collections\Concurrent\ConcurrentDictionary.cs" />
+    <Compile Include="Core\ConcurrentDictionary\System\Collections\Generic\IReadOnlyCollection.cs" />
+    <Compile Include="Core\ConcurrentDictionary\System\Collections\Generic\IReadOnlyDictionary.cs" />
+    <Compile Include="Core\ConcurrentDictionary\System\PlatformHelper.cs" />
+    <Compile Include="Core\ConcurrentDictionary\System\SR.cs" />
+    <Compile Include="Core\ConcurrentDictionary\System\Threading\Volatile.cs" />
+    <Compile Include="Core\System.Linq\DeepCopy.Assign.cs" />
+    <Compile Include="Core\System.Linq\IsNumber.cs" />
+    <Compile Include="Core\System.Linq\LinqExt.cs" />
+    <Compile Include="Core\System.Linq\Lucene.Net.cs" />
+    <Compile Include="Core\System.Linq\System.Collections.Generic\HashSet.cs" />
+    <Compile Include="Core\System.Linq\System.Collections.Generic\ISet.cs" />
+    <Compile Include="Core\System.Linq\System.Data.Linq\MonoTODOAttribute.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Dynamic\System.Linq.Dynamic.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\BinaryExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\ConditionalExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\ConstantExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\ElementInit.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\EmitContext.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\Expression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\ExpressionPrinter.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\ExpressionTransformer.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\ExpressionType.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\ExpressionVisitor.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\Expression_T.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\Extensions.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\InvocationExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\LambdaExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\ListInitExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\MemberAssignment.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\MemberBinding.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\MemberBindingType.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\MemberExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\MemberInitExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\MemberListBinding.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\MemberMemberBinding.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\MethodCallExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\NewArrayExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\NewExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\ParameterExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\TypeBinaryExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Expressions\UnaryExpression.cs" />
+    <Compile Include="Core\System.Linq\System.Linq.Ext.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\Check.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\Enumerable.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\Grouping.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\IGrouping.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\ILookup_T.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\IOrderedEnumerable_T.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\IOrderedQueryable.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\IOrderedQueryable_T.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\IQueryable.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\IQueryable_T.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\IQueryProvider.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\Lookup.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\OrderedEnumerable.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\OrderedSequence.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\Queryable.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\QueryableEnumerable.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\QueryableTransformer.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\QuickSort.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\SortContext.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\SortDirection.cs" />
+    <Compile Include="Core\System.Linq\System.Linq\SortSequenceContext.cs" />
+    <Compile Include="Core\System.Linq\System.Runtime.CompilerServices\DynamicAttribute.cs" />
+    <Compile Include="Core\System.Linq\System.Runtime.CompilerServices\ExecutionScope.cs" />
+    <Compile Include="Core\System.Linq\System.Runtime.CompilerServices\ExtensionAttribute.cs" />
+    <Compile Include="Core\System.Linq\System.Runtime.CompilerServices\IStrongBox.cs" />
+    <Compile Include="Core\System.Linq\System.Runtime.CompilerServices\StrongBox_T.cs" />
+    <Compile Include="Core\System.Linq\System\Action.cs" />
+    <Compile Include="Core\System.Linq\System\Func.cs" />
+    <Compile Include="Core\System.Linq\Tuple\IStructuralComparable.cs" />
+    <Compile Include="Core\System.Linq\Tuple\IStructuralEquatable.cs" />
+    <Compile Include="Core\System.Linq\Tuple\Tuple.cs" />
+    <Compile Include="Core\TcpServer\HttpBuilder.cs" />
+    <Compile Include="Core\TcpServer\HttpProcessor.cs" />
+    <Compile Include="Core\TcpServer\HttpServer.cs" />
+    <Compile Include="Core\TcpServer\Models\HttpRequest.cs" />
+    <Compile Include="Core\TcpServer\Models\HttpResponse.cs" />
+    <Compile Include="Core\TcpServer\Models\Route.cs" />
+    <Compile Include="Core\TcpServer\RouteHandlers\FileSystemRouteHandler.cs" />
+    <Compile Include="MSG_TYPE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DLL\Newtonsoft.Json.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core\TcpServer\Resources\Pages\404.html" />
+    <Content Include="Core\TcpServer\Resources\Pages\500.html" />
+    <EmbeddedResource Include="DLL\log4net.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
