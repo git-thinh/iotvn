@@ -47,13 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Core\ConcurrentDictionary\System\ArrayHelper.cs" />
-    <Compile Include="Core\ConcurrentDictionary\System\Collections\Concurrent\ConcurrentDictionary.cs" />
-    <Compile Include="Core\ConcurrentDictionary\System\Collections\Generic\IReadOnlyCollection.cs" />
-    <Compile Include="Core\ConcurrentDictionary\System\Collections\Generic\IReadOnlyDictionary.cs" />
-    <Compile Include="Core\ConcurrentDictionary\System\PlatformHelper.cs" />
-    <Compile Include="Core\ConcurrentDictionary\System\SR.cs" />
-    <Compile Include="Core\ConcurrentDictionary\System\Threading\Volatile.cs" />
+    <Compile Include="Core\MMF\FileMapIOException.cs" />
+    <Compile Include="Core\MMF\MapViewStream.cs" />
+    <Compile Include="Core\MMF\MemoryMappedFile.cs" />
+    <Compile Include="Core\MMF\Win32APIs.cs" />
     <Compile Include="Core\System.Linq\DeepCopy.Assign.cs" />
     <Compile Include="Core\System.Linq\IsNumber.cs" />
     <Compile Include="Core\System.Linq\LinqExt.cs" />
@@ -122,6 +119,13 @@
     <Compile Include="Core\System.Linq\Tuple\IStructuralComparable.cs" />
     <Compile Include="Core\System.Linq\Tuple\IStructuralEquatable.cs" />
     <Compile Include="Core\System.Linq\Tuple\Tuple.cs" />
+    <Compile Include="Core\System.Threading\DictionaryThreadSafe.cs" />
+    <Compile Include="Core\System.Threading\ListThreadSafe.cs" />
+    <Compile Include="Core\System.Threading\QueueThreadSafe.cs" />
+    <Compile Include="Core\System.Threading\ReaderWriterLockSlim.cs" />
+    <Compile Include="Core\System.Threading\ReaderWriterLockSlimExtensions.cs" />
+    <Compile Include="Core\System.Threading\ReadWriteLockSlimExtend.cs" />
+    <Compile Include="Core\System.Threading\StackThreadSafe.cs" />
     <Compile Include="Core\TcpServer\HttpBuilder.cs" />
     <Compile Include="Core\TcpServer\HttpProcessor.cs" />
     <Compile Include="Core\TcpServer\HttpServer.cs" />
