@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
       <HintPath>DLL\log4net.dll</HintPath>
@@ -259,6 +262,7 @@
     <Content Include="Core\mustache\_ReadMe.txt" />
     <Content Include="Core\TcpServer\Resources\Pages\404.html" />
     <Content Include="Core\TcpServer\Resources\Pages\500.html" />
+    <Content Include="icon.ico" />
     <EmbeddedResource Include="DLL\log4net.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
