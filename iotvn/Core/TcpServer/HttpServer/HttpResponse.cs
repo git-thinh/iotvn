@@ -1,8 +1,5 @@
-﻿// Copyright (C) 2016 by Barend Erasmus and donated to the public domain
-
-using System;
-using System.Collections.Generic;
-//using System.Linq;
+﻿
+using System.Collections.Generic; 
 using System.Text;
 
 // NOTE: two consequences of this simplified response model are:
@@ -12,7 +9,7 @@ using System.Text;
 //       must be loaded into memory in the the Content property. If you want to send large files,
 //       this has to be reworked so a handler can write to the output stream instead. 
 
-namespace SimpleHttpServer.Models
+namespace System.TcpHandler.Http
 {
     public enum HttpStatusCode
     {

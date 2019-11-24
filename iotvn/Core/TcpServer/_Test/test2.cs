@@ -1,14 +1,9 @@
-﻿// Copyright (C) 2016 by Barend Erasmus and donated to the public domain
-
-using SimpleHttpServer;
-using SimpleHttpServer.Models;
-using SimpleHttpServer.RouteHandlers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.TcpHandler.Http;
 using System.Text;
 using System.Threading;
-//using System.Threading.Tasks;
 
 namespace iotvn
 {
@@ -33,7 +28,7 @@ namespace iotvn
                             BasePath = @"D:\Projects\themes",
                             ShowDirectories = true
                         }.Handle,
-                        UrlRegex = "^\\/Static\\/(.*)$",
+                        UrlRegex = "^\\/static\\/(.*)$",
                         Method = "GET"
                     }
                 };
@@ -57,8 +52,7 @@ namespace iotvn
     {
         public static void run()
         {
-            HttpServer httpServer = new HttpServer(8080, Routes.GET);
-
+            HttpServer httpServer = new HttpServer(12345, Routes.GET);
             Thread thread = new Thread(new ThreadStart(httpServer.Listen));
             thread.Start();
         }

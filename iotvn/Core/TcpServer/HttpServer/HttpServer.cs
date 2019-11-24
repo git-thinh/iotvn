@@ -1,17 +1,10 @@
-﻿// Copyright (C) 2016 by David Jeske, Barend Erasmus and donated to the public domain
-
-using log4net;
-using SimpleHttpServer;
-using SimpleHttpServer.Models;
-using System;
-using System.Collections;
+﻿using log4net;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace SimpleHttpServer
+namespace System.TcpHandler.Http
 {
 
     public class HttpServer
@@ -28,10 +21,10 @@ namespace SimpleHttpServer
         private static readonly ILog log = LogManager.GetLogger(typeof(HttpServer));
 
         #region Public Methods
-        public HttpServer(int port, List<Route> routes)
+        public HttpServer(int port, List<Route> routes, ITcpMessage tcpMessage_ = null)
         {
             this.Port = port;
-            this.Processor = new HttpProcessor();
+            this.Processor = new HttpProcessor(tcpMessage_);
 
             foreach (var route in routes)
             {
@@ -46,11 +39,12 @@ namespace SimpleHttpServer
             while (this.IsActive)
             {
                 TcpClient s = this.Listener.AcceptTcpClient();
-                Thread thread = new Thread(() =>
+                Thread thread = new Thread(new ParameterizedThreadStart((object obj) =>
                 {
-                    this.Processor.HandleClient(s);
-                });
-                thread.Start();
+                    TcpClient socket = (TcpClient)obj;
+                    this.Processor.HandleClient(socket);
+                }));
+                thread.Start(s);
                 Thread.Sleep(1);
             }
         }

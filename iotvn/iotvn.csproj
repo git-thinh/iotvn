@@ -231,6 +231,13 @@
     <Compile Include="Core\System.Linq\Tuple\IStructuralComparable.cs" />
     <Compile Include="Core\System.Linq\Tuple\IStructuralEquatable.cs" />
     <Compile Include="Core\System.Linq\Tuple\Tuple.cs" />
+    <Compile Include="Core\System.Threading\ConcurrentDictionary\System\ArrayHelper.cs" />
+    <Compile Include="Core\System.Threading\ConcurrentDictionary\System\Collections\Concurrent\ConcurrentDictionary.cs" />
+    <Compile Include="Core\System.Threading\ConcurrentDictionary\System\Collections\Generic\IReadOnlyCollection.cs" />
+    <Compile Include="Core\System.Threading\ConcurrentDictionary\System\Collections\Generic\IReadOnlyDictionary.cs" />
+    <Compile Include="Core\System.Threading\ConcurrentDictionary\System\PlatformHelper.cs" />
+    <Compile Include="Core\System.Threading\ConcurrentDictionary\System\SR.cs" />
+    <Compile Include="Core\System.Threading\ConcurrentDictionary\System\Threading\Volatile.cs" />
     <Compile Include="Core\System.Threading\DictionaryThreadSafe.cs" />
     <Compile Include="Core\System.Threading\ListThreadSafe.cs" />
     <Compile Include="Core\System.Threading\QueueThreadSafe.cs" />
@@ -238,15 +245,9 @@
     <Compile Include="Core\System.Threading\ReaderWriterLockSlimExtensions.cs" />
     <Compile Include="Core\System.Threading\ReadWriteLockSlimExtend.cs" />
     <Compile Include="Core\System.Threading\StackThreadSafe.cs" />
-    <Compile Include="Core\TcpServer\HttpBuilder.cs" />
-    <Compile Include="Core\TcpServer\HttpProcessor.cs" />
-    <Compile Include="Core\TcpServer\HttpServer.cs" />
-    <Compile Include="Core\TcpServer\Models\HttpRequest.cs" />
-    <Compile Include="Core\TcpServer\Models\HttpResponse.cs" />
-    <Compile Include="Core\TcpServer\Models\Route.cs" />
-    <Compile Include="Core\TcpServer\RouteHandlers\FileSystemRouteHandler.cs" />
-    <Compile Include="Core\TcpServer\_Test\test1.cs" />
-    <Compile Include="Core\TcpServer\_Test\test2.cs" />
+    <Compile Include="Core\TcpServer\TcpHandler.cs" />
+    <Compile Include="Core\TcpServer\TcpMessage.cs" />
+    <Compile Include="Core\TcpServer\TcpServer.cs" />
     <Compile Include="MSG_TYPE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -260,10 +261,9 @@
   <ItemGroup>
     <Content Include="Core\mustache\mustache-sharp.csproj" />
     <Content Include="Core\mustache\_ReadMe.txt" />
-    <Content Include="Core\TcpServer\Resources\Pages\404.html" />
-    <Content Include="Core\TcpServer\Resources\Pages\500.html" />
     <Content Include="icon.ico" />
     <EmbeddedResource Include="DLL\log4net.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

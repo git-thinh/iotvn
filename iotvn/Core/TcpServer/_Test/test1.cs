@@ -1,15 +1,10 @@
-﻿// Copyright (C) 2016 by Barend Erasmus, David Jeske and donated to the public domain
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.TcpHandler.Http;
 using System.Text;
 using System.Threading;
-//using System.Threading.Tasks;
-
-using SimpleHttpServer;
-using SimpleHttpServer.Models;
-using SimpleHttpServer.RouteHandlers;
 
 namespace iotvn
 {
@@ -19,7 +14,7 @@ namespace iotvn
         {
             log4net.Config.XmlConfigurator.Configure();
 
-            var route_config = new List<SimpleHttpServer.Models.Route>() {
+            var route_config = new List<Route>() {
                 new Route {
                     Name = "Hello Handler",
                     UrlRegex = @"^/$",

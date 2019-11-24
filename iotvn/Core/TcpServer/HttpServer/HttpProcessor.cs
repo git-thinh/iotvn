@@ -1,8 +1,4 @@
-﻿// Copyright (C) 2016 by David Jeske, Barend Erasmus and donated to the public domain
-
-using log4net;
-using SimpleHttpServer.Models;
-using System;
+﻿using log4net;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-namespace SimpleHttpServer
+namespace System.TcpHandler.Http
 {
     public class HttpProcessor
     {
@@ -28,8 +24,10 @@ namespace SimpleHttpServer
 
         #region Constructors
 
-        public HttpProcessor()
+        readonly ITcpMessage tcpMessage;
+        public HttpProcessor(ITcpMessage tcpMessage_)
         {
+            this.tcpMessage = tcpMessage_;
         }
 
         #endregion

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
 using System.Reflection;
+using System.TcpProcessor;
 using System.Text;
 using System.Threading;
 
@@ -47,7 +48,7 @@ namespace iotvn
 
         static void Main(string[] args)
         {
-            tcpServer_test2.run();
+            TcpServer.Start();
 
             //var server = new TcpListener(System.Net.IPAddress.Parse("127.0.0.1"), 12345);
             //server.Start();

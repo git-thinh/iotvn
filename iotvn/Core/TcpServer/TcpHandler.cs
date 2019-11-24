@@ -1,119 +1,45 @@
-﻿// Copyright (C) 2016 by Barend Erasmus, David Jeske and donated to the public domain
-
-using SimpleHttpServer.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-//using System.Linq;
-using System.Text;
-//using System.Threading.Tasks;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
 
-namespace SimpleHttpServer.RouteHandlers
+namespace System.TcpProcessor
 {
-    public class FileSystemRouteHandler
+    public class TcpHandler
     {
+        readonly int Port;
+        readonly TcpListener Listener;
+        readonly ITcpMessage tcpMessage;
+        bool IsActive = true;
 
-        public string BasePath { get; set; }
-        public bool ShowDirectories { get; set; }
-
-        public HttpResponse Handle(HttpRequest request)
+        public TcpHandler(int port, ITcpMessage tcpMessage_ = null)
         {
-            var url_part = request.Path;
-
-            // do some basic sanitization of the URL, attempting to make sure they can't read files outside the basepath
-            // NOTE: this is probably not bulletproof/secure
-            url_part = url_part.Replace("\\..\\", "\\");
-            url_part = url_part.Replace("/../", "/");
-            url_part = url_part.Replace("//", "/");
-            url_part = url_part.Replace(@"\\", @"\");
-            url_part = url_part.Replace(":", "");
-            url_part = url_part.Replace("/", Path.DirectorySeparatorChar.ToString());
-
-            // make sure the first part of the path is not 
-            if (url_part.Length > 0)
-            {
-                //var first_char = url_part.ElementAt(0);
-                var first_char = url_part[0];
-                if (first_char == '/' || first_char == '\\')
-                {
-                    url_part = "." + url_part;
-                }
-            }
-            var local_path = Path.Combine(this.BasePath, url_part.Split('?')[0]);
-
-            if (ShowDirectories && Directory.Exists(local_path))
-            {
-                // Console.WriteLine("FileSystemRouteHandler Dir {0}",local_path);
-                return Handle_LocalDir(request, local_path);
-            }
-            else if (File.Exists(local_path))
-            {
-                // Console.WriteLine("FileSystemRouteHandler File {0}", local_path);
-                return Handle_LocalFile(request, local_path);
-            }
-            else
-            {
-                return new HttpResponse
-                {
-                    StatusCode = "404",
-                    ReasonPhrase = string.Format("Not Found ({0}) handler({1})", local_path, request.Route.Name),
-                };
-            }
+            this.tcpMessage = tcpMessage_;
+            this.Port = port;
+            this.Listener = new TcpListener(IPAddress.Any, this.Port);
         }
 
-        HttpResponse Handle_LocalFile(HttpRequest request, string local_path)
+        public void Listen()
         {
-            var file_extension = Path.GetExtension(local_path);
-
-            var response = new HttpResponse();
-            response.StatusCode = "200";
-            response.ReasonPhrase = "Ok";
-            response.Headers["Content-Type"] = QuickMimeTypeMapper.GetMimeType(file_extension);
-            response.Content = File.ReadAllBytes(local_path);
-
-            return response;
-        }
-
-        HttpResponse Handle_LocalDir(HttpRequest request, string local_path)
-        {
-            var output = new StringBuilder();
-            string pathUrl = request.Url;
-            if (pathUrl[pathUrl.Length - 1] == '/') pathUrl = pathUrl.Substring(0, pathUrl.Length - 1);
-            
-            string[] a = pathUrl.Split('/');
-            if (a.Length > 1)
+            this.Listener.Start();
+            while (this.IsActive)
             {
-                string parent_path = pathUrl.Substring(0, pathUrl.Length - a[a.Length - 1].Length);
-                output.Append(string.Format("<h1> Directory: <a href=\"{0}\">{1}</a> </h1>", parent_path, pathUrl));
-                output.Append("<hr>");
+                TcpClient client = this.Listener.AcceptTcpClient();
+                Thread thread = new Thread(new ParameterizedThreadStart((object obj) =>
+                {
+                    TcpClient socket = (TcpClient)obj;
+                    Stream stream = socket.GetStream();
+                    int type = stream.ReadByte();
+                    this.tcpMessage.Process(stream, type);
+                    socket.Close();
+                }));
+                thread.Start(client);
+                Thread.Sleep(1);
             }
-
-            foreach (var entry in Directory.GetDirectories(local_path))
-            {
-                var dir_info = new System.IO.DirectoryInfo(entry);
-                var dir_name = dir_info.Name;
-                //output.Append(string.Format("<a href=\"{1}\">{1}</a> <br>", dir_name, dir_name));
-                output.Append(string.Format("<a href=\"{0}/{1}\">{1}</a> <br>", pathUrl, dir_name, dir_name));
-            }
-
-            output.Append("<hr>");
-
-            foreach (var entry in Directory.GetFiles(local_path))
-            {
-                var file_info = new System.IO.FileInfo(entry);
-                var filename = file_info.Name;
-                //output.Append(string.Format("<a href=\"{1}\">{1}</a> <br>", filename, filename));
-                output.Append(string.Format("<a href=\"{0}/{1}\">{1}</a> <br>", pathUrl, filename, filename));
-            }
-
-            return new HttpResponse()
-            {
-                StatusCode = "200",
-                ReasonPhrase = "Ok",
-                ContentAsUTF8 = output.ToString(),
-            };
         }
     }
+
 
     // HTTP requires that resposnes contain the proper MIME type. This quick mapping list below
     // contains many more mimetypes than System.Web.MimeMapping
@@ -732,5 +658,7 @@ namespace SimpleHttpServer.RouteHandlers
 
 
     }
-
 }
+
+
+

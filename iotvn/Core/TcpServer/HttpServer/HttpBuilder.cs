@@ -1,12 +1,4 @@
-﻿using SimpleHttpServer.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-//using System.Linq;
-using System.Text;
-//using System.Threading.Tasks;
-
-namespace SimpleHttpServer
+﻿namespace System.TcpHandler.Http
 {
     class HttpBuilder
     {
