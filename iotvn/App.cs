@@ -47,43 +47,45 @@ namespace iotvn
 
         static void Main(string[] args)
         {
-            var server = new TcpListener(System.Net.IPAddress.Parse("127.0.0.1"), 12345);
-            server.Start();
-            try
-            {
-                while (true)
-                {
-                    TcpClient clientAccept = server.AcceptTcpClient();
-                    Thread t = new Thread(new ParameterizedThreadStart((obj)=> {
-                        TcpClient client = (TcpClient)obj;
-                        var stream = client.GetStream();
-                        try
-                        {
-                            byte[] bufs = new byte[_BUFFER_SIZE];
-                            int i = stream.Read(bufs, 0, bufs.Length);
-                            //if (i > 36)
-                            //{
-                            //    MSG_TYPE type = (MSG_TYPE)bufs[0];
-                            //    string data = Encoding.UTF8.GetString(bufs, 1, i - 1);
-                            //    if (data.Length > 36) data = data.Substring(36);
-                            //    Console.WriteLine("{0}\t\t\t={1}", type, data);
-                            //    ___process_message(stream, type, data);
-                            //}
-                            client.Close();
-                        }
-                        catch
-                        {
-                            client.Close();
-                        }
-                    }));
-                    t.Start(clientAccept);
-                }
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine("SocketException: {0}", e);
-                server.Stop();
-            }
+            tcpServer_test2.run();
+
+            //var server = new TcpListener(System.Net.IPAddress.Parse("127.0.0.1"), 12345);
+            //server.Start();
+            //try
+            //{
+            //    while (true)
+            //    {
+            //        TcpClient clientAccept = server.AcceptTcpClient();
+            //        Thread t = new Thread(new ParameterizedThreadStart((obj)=> {
+            //            TcpClient client = (TcpClient)obj;
+            //            var stream = client.GetStream();
+            //            try
+            //            {
+            //                byte[] bufs = new byte[_BUFFER_SIZE];
+            //                int i = stream.Read(bufs, 0, bufs.Length);
+            //                //if (i > 36)
+            //                //{
+            //                //    MSG_TYPE type = (MSG_TYPE)bufs[0];
+            //                //    string data = Encoding.UTF8.GetString(bufs, 1, i - 1);
+            //                //    if (data.Length > 36) data = data.Substring(36);
+            //                //    Console.WriteLine("{0}\t\t\t={1}", type, data);
+            //                //    ___process_message(stream, type, data);
+            //                //}
+            //                client.Close();
+            //            }
+            //            catch
+            //            {
+            //                client.Close();
+            //            }
+            //        }));
+            //        t.Start(clientAccept);
+            //    }
+            //}
+            //catch (SocketException e)
+            //{
+            //    Console.WriteLine("SocketException: {0}", e);
+            //    server.Stop();
+            //}
 
         }
     }

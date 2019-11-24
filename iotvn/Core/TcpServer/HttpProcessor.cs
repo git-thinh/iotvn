@@ -62,30 +62,34 @@ namespace SimpleHttpServer
 
             inputStream.Close();
             inputStream = null;
-
         }
 
         // this formats the HTTP response...
         private static void WriteResponse(Stream stream, HttpResponse response)
         {
-            if (response.Content == null)
+            try
             {
-                response.Content = new byte[] { };
+                if (response.Content == null)
+                {
+                    response.Content = new byte[] { };
+                }
+
+                // default to text/html content type
+                if (!response.Headers.ContainsKey("Content-Type"))
+                {
+                    response.Headers["Content-Type"] = "text/html";
+                }
+
+                response.Headers["Content-Length"] = response.Content.Length.ToString();
+
+                Write(stream, string.Format("HTTP/1.0 {0} {1}\r\n", response.StatusCode, response.ReasonPhrase));
+                Write(stream, string.Join("\r\n", response.Headers.Select(x => string.Format("{0}: {1}", x.Key, x.Value)).ToArray()));
+                Write(stream, "\r\n\r\n");
+
+                stream.Write(response.Content, 0, response.Content.Length);
             }
-
-            // default to text/html content type
-            if (!response.Headers.ContainsKey("Content-Type"))
-            {
-                response.Headers["Content-Type"] = "text/html";
+            catch { 
             }
-
-            response.Headers["Content-Length"] = response.Content.Length.ToString();
-
-            Write(stream, string.Format("HTTP/1.0 {0} {1}\r\n", response.StatusCode, response.ReasonPhrase));
-            Write(stream, string.Join("\r\n", response.Headers.Select(x => string.Format("{0}: {1}", x.Key, x.Value)).ToArray()));
-            Write(stream, "\r\n\r\n");
-
-            stream.Write(response.Content, 0, response.Content.Length);
         }
 
         public void AddRoute(Route route)
@@ -114,8 +118,12 @@ namespace SimpleHttpServer
 
         private static void Write(Stream stream, string text)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(text);
-            stream.Write(bytes, 0, bytes.Length);
+            try
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(text);
+                stream.Write(bytes, 0, bytes.Length);
+            }
+            catch { }
         }
 
         protected virtual Stream GetOutputStream(TcpClient tcpClient)

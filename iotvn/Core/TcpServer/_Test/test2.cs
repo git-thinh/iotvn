@@ -29,7 +29,10 @@ namespace iotvn
                     },
                     new Route()
                     {
-                        Callable = new FileSystemRouteHandler() { BasePath = @"C:\Users\Barend.Erasmus\Desktop\Test"}.Handle,
+                        Callable = new FileSystemRouteHandler() { 
+                            BasePath = @"D:\Projects\themes",
+                            ShowDirectories = true
+                        }.Handle,
                         UrlRegex = "^\\/Static\\/(.*)$",
                         Method = "GET"
                     }
@@ -50,9 +53,9 @@ namespace iotvn
         }
     }
 
-    class test2
+    class tcpServer_test2
     {
-        static void run(string[] args)
+        public static void run()
         {
             HttpServer httpServer = new HttpServer(8080, Routes.GET);
 

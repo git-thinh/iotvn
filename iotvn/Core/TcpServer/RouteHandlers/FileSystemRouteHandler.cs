@@ -39,7 +39,7 @@ namespace SimpleHttpServer.RouteHandlers
                     url_part = "." + url_part;
                 }
             }
-            var local_path = Path.Combine(this.BasePath, url_part);
+            var local_path = Path.Combine(this.BasePath, url_part.Split('?')[0]);
 
             if (ShowDirectories && Directory.Exists(local_path))
             {
@@ -77,14 +77,33 @@ namespace SimpleHttpServer.RouteHandlers
         HttpResponse Handle_LocalDir(HttpRequest request, string local_path)
         {
             var output = new StringBuilder();
-            output.Append(string.Format("<h1> Directory: {0} </h1>", request.Url));
+            string pathUrl = request.Url;
+            if (pathUrl[pathUrl.Length - 1] == '/') pathUrl = pathUrl.Substring(0, pathUrl.Length - 1);
+            
+            string[] a = pathUrl.Split('/');
+            if (a.Length > 1)
+            {
+                string parent_path = pathUrl.Substring(0, pathUrl.Length - a[a.Length - 1].Length);
+                output.Append(string.Format("<h1> Directory: <a href=\"{0}\">{1}</a> </h1>", parent_path, pathUrl));
+                output.Append("<hr>");
+            }
+
+            foreach (var entry in Directory.GetDirectories(local_path))
+            {
+                var dir_info = new System.IO.DirectoryInfo(entry);
+                var dir_name = dir_info.Name;
+                //output.Append(string.Format("<a href=\"{1}\">{1}</a> <br>", dir_name, dir_name));
+                output.Append(string.Format("<a href=\"{0}/{1}\">{1}</a> <br>", pathUrl, dir_name, dir_name));
+            }
+
+            output.Append("<hr>");
 
             foreach (var entry in Directory.GetFiles(local_path))
             {
                 var file_info = new System.IO.FileInfo(entry);
-
                 var filename = file_info.Name;
-                output.Append(string.Format("<a href=\"{1}\">{1}</a> <br>", filename, filename));
+                //output.Append(string.Format("<a href=\"{1}\">{1}</a> <br>", filename, filename));
+                output.Append(string.Format("<a href=\"{0}/{1}\">{1}</a> <br>", pathUrl, filename, filename));
             }
 
             return new HttpResponse()
@@ -689,6 +708,24 @@ namespace SimpleHttpServer.RouteHandlers
         {".xwd", "image/x-xwindowdump"},
         {".z", "application/x-compress"},
         {".zip", "application/x-zip-compressed"},
+
+
+        //{".ttf", "application/octet-stream"},
+        //AddType font/ttf .ttf
+        
+        //{".eot", "application/octet-stream"},
+        //AddType font/eot .eot
+
+        {".otf", "application/octet-stream"},
+        //AddType font/otf .otf
+
+        {".woff", "application/octet-stream"},
+        //AddType font/woff .woff
+
+        {".woff2", "application/octet-stream"},
+        //AddType font/woff2 .woff2
+
+
         #endregion
 
         };
