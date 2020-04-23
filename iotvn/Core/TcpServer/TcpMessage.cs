@@ -162,18 +162,20 @@ namespace System.TcpProcessor
                             //    _USER__TOKENS.TryGetValue(user.username, out token);
                             //}
 
-                                token = Guid.NewGuid().ToString();
-                                _TOKENS_USER.TryAdd(token, user.username);
+                            token = Guid.NewGuid().ToString();
+                            _TOKENS_USER.TryAdd(token, user.username);
 
                             if (token.Length > 0)
                             {
                                 response___write_json(stream, new { ok = true, message = token });
                             }
-                            else {
+                            else
+                            {
                                 response___write_json(stream, new { ok = false, message = "Error: cannot create a token for user logined success" });
                             }
                         }
-                        catch (Exception ex) {
+                        catch (Exception ex)
+                        {
                             response___write_json(stream, new { ok = false, message = "Data must be: { username:'...', password: '...' }. Error: " + ex.Message });
                         }
                         #endregion
@@ -186,13 +188,14 @@ namespace System.TcpProcessor
                         break;
                 }
             }
-            else {
+            else
+            {
                 response___write_json(stream, new { ok = false, message = "The format data of POST must be type JSON" });
             }
         }
 
         #region [ TOKEN - LOGIN ]
-         
+
         static ConcurrentDictionary<string, string> _TOKENS_USER = new ConcurrentDictionary<string, string>() { };
 
         bool token___valid_go_login(Stream stream, string method, string url, string request)
@@ -213,14 +216,16 @@ namespace System.TcpProcessor
                     {
                         string token = string.Empty;
 
-                        if (request.Contains("\r\ntoken: ")) {
+                        if (request.Contains("\r\ntoken: "))
+                        {
 
                             string[] a = request.Split(new string[] { "\r\ntoken: " }, StringSplitOptions.None);
                             if (a.Length > 1) token = a[1];
                             if (token.Length > 36) token = token.Substring(0, 36);
                         }
 
-                        if (token.Length == 36 && _TOKENS_USER.ContainsKey(token)) {
+                        if (token.Length == 36 && _TOKENS_USER.ContainsKey(token))
+                        {
                             ;
                         }
                         else
@@ -230,7 +235,7 @@ namespace System.TcpProcessor
                         }
                     }
                     break;
-            }            
+            }
             return go_login;
         }
 
@@ -258,8 +263,6 @@ namespace System.TcpProcessor
 
         static void response___write_static_file(Stream stream, string root_path, string path_file)
         {
-            string html = "";
-
             string path = path_file.Replace('/', '\\');
             if (path.Length > 0 && path[0] == '\\') path = path.Substring(1);
 
@@ -267,6 +270,7 @@ namespace System.TcpProcessor
 
             if (File.Exists(file))
             {
+                //string html = "";
                 //html = File.ReadAllText(file);
                 //response___write(stream, Encoding.UTF8.GetBytes(html));
 
