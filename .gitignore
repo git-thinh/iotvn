@@ -1,3 +1,5 @@
 /.vs
 /iotvn/bin
 /iotvn/obj
+/services/Iotvn.Service.Redis/obj
+/services/Iotvn.Service.Redis/bin

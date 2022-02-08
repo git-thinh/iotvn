@@ -1,0 +1,27 @@
+npm install -g zmp-cli
+zmp init
+zmp start
+zmp deploy
+
+npm run start
+npm run deploy
+
+
+Launched external handler for 'zalo://qr/app/link/zapps/3716832161440571828/'.
+https://rd.zapps.vn/detail/2426252611995418021?zl3rd=815789662550058820&id=37870978403da963f02c
+
+
+npm install zmp-sdk
+npm install create-react-class
+npm i react-query
+
+npm install --save antd-mobile@next
+npm install --save antd-mobile-icons
+npm install react-icons --save
+
+
+npm install semantic-ui-react semantic-ui-css
+npm install fomantic-ui
+npm install react-bootstrap bootstrap@5.1.3
+
+
