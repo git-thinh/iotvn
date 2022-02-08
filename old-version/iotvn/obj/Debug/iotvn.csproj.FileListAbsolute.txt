@@ -1,0 +1,4 @@
+D:\iotvn\release\iotvn.exe
+D:\iotvn\release\iotvn.pdb
+D:\iotvn\iotvn\iotvn\obj\Debug\iotvn.exe
+D:\iotvn\iotvn\iotvn\obj\Debug\iotvn.pdb
