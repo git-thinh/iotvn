@@ -3,3 +3,6 @@
 /iotvn/obj
 /services/Iotvn.Service.Redis/obj
 /services/Iotvn.Service.Redis/bin
+/services/Iotvn.Service.Image/obj
+/services/Iotvn.Service.Image/bin
+/services/Iotvn.Service.Image/wwwroot/test

@@ -1,0 +1,178 @@
+[
+  {
+    "name": "RedisUserLogin",
+    "description": "",
+    "data_type": "id|username|password|status",
+    "email": "app.iot.vn@gmail.com",
+    "port": 10840,
+    "host": "redis-10840.c295.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "vuUHTIHXg8HtIq7807YDZhxC3QyhAZkA"
+  },
+  {
+    "name": "RedisLocation",
+    "description": "",
+    "data_type": "id|level|parent_id|title|status",
+    "email": "thinh.iot.vn@gmail.com",
+    "port": 19957,
+    "host": "redis-19957.c252.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "1acMN3lVqIcjl9AFbBx7YYWEXhyZqXX2"
+  },
+  {
+    "name": "RedisItems",
+    "description": "Area, Group, Category",
+    "data_type": "id|title|status",
+    "email": "ttgsoft@gmail.com",
+    "port": 17431,
+    "host": "redis-17431.c252.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "Wb16vzR8XmFogEFSy5WaW5RawaQQ9Wfu"
+  },
+
+
+  {
+    "name": "dev.crawler.domain",
+    "description": "",
+    "email": "thinh.books@gmail.com",
+    "port": 17321,
+    "host": "redis-17321.c292.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "KI19YqNMPLVC2DosxjOKmddq1DyqHhCp"
+  },
+  {
+    "name": "dev.crawler.link",
+    "description": "",
+    "email": "thinhifis@gmail.com",
+    "port": 14059,
+    "host": "redis-14059.c295.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "TpNPNjiH74fCQHa5elAWz3T7aUL8osTo"
+  },
+  {
+    "name": "dev.crawler.content",
+    "description": "",
+    "email": "thinhenit@gmail.com",
+    "port": 19644,
+    "host": "redis-19644.c252.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "zU1wiQ1kjaYeglZm71DvfS75l5osQbZ3"
+  },
+  {
+    "name": "dev.crawler.image",
+    "description": "",
+    "email": "thinh.tool.adobe@gmail.com",
+    "port": 17122,
+    "host": "redis-17122.c252.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "hqZJEgk9oeViW8MqEhrtLyaqrk69wPNg"
+  },
+
+  {
+    "name": "prod.crawler.domain",
+    "description": "",
+    "email": "chuphucben@gmail.com",
+    "port": 19742,
+    "host": "redis-19742.c292.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "x78vNgdwjtcA06RggvgNWWEgjT0B8xmM"
+  },
+  {
+    "name": "prod.crawler.link",
+    "description": "",
+    "email": "phat.iot.vn@gmail.com",
+    "port": 16343,
+    "host": "redis-16343.c252.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "je4nPjllxQNNtKYmfn1fKL00hnlnvmLk"
+  },
+  {
+    "name": "prod.crawler.content",
+    "description": "",
+    "email": "www.iot.vn@gmail.com",
+    "port": 11769,
+    "host": "redis-11769.c252.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "iCrYQHkWmkeDjw71gRLAHRhlSzoD71Ee"
+  },
+  {
+    "name": "prod.crawler.image",
+    "description": "",
+    "email": "chuphucben.iot.vn@gmail.com",
+    "port": 12823,
+    "host": "redis-12823.c295.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "4Y466iYUl7U4g3bALbL2fl5CArkmyD9z"
+  },
+
+
+
+
+  {
+    "email": "sach.iot.vn@gmail.com",
+    "port": 11339,
+    "host": "redis-11339.c252.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "sAW0XPLxnctGdNKfZoaCp6gt6l6gBGi1"
+  },
+  {
+    "email": "maitron1niemtin@gmail.com",
+    "port": 12906,
+    "host": "redis-12906.c292.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "Og6Zf1HB1mKHxcBIlUrwZmZPgBL0DptG"
+  },
+  {
+    "email": "thinhgooapi@gmail.com",
+    "port": 14049,
+    "host": "redis-14049.c252.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "iJN0aMmmlJU97f4J3MEdzZHLapsyxqAa"
+  },
+  {
+    "email": "thinh.book.01@gmail.com",
+    "port": 11087,
+    "host": "redis-11087.c292.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "cRrPyWEh33JLUHACCG1YrlMqN7QxHMNo"
+  },
+  {
+    "email": "thinh.pql.golfview@gmail.com",
+    "port": 15039,
+    "host": "redis-15039.c292.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "DvndRm1ttfpJOjndiwKWS5dbr4QxwEcG"
+  },
+  {
+    "email": "buivuthaonguyen123@gmail.com",
+    "port": 17507,
+    "host": "redis-17507.c295.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "Twre9rB1RSgHyA2fCf1BGTrskdjb63pA"
+  },
+  {
+    "email": "nhimaiyen6@gmail.com",
+    "port": 19660,
+    "host": "redis-19660.c292.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "zwBO973B1T6TyoQ4Q7sqzZ7JnII8dejE"
+  },
+  {
+    "email": "nguyenhonggiang847@gmail.com",
+    "port": 17597,
+    "host": "redis-17597.c295.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "HGqikfqtulcYp1Mj0DXkClIy9DxS51OO"
+  },
+  {
+    "email": "iot.vn@outlook.com",
+    "port": 15044,
+    "host": "redis-15044.c295.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "Gm9KvalSPeftzeQvcJTVahboGsthnvFs"
+  },
+  {
+    "email": "igevevbdtkokbhhhbd@nvhrw.com",
+    "port": 14064,
+    "host": "redis-14064.c252.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": ""
+  },
+  {
+    "email": "sriqtyreveagkuihyj@nthrw.com",
+    "port": 18937,
+    "host": "redis-18937.c295.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "S55QbPqvgU27sBerq0E28SubX3hJG21B"
+  },
+  {
+    "email": "hggkmjlpcvvjlvnlgs@kvhrw.com",
+    "port": 17532,
+    "host": "redis-17532.c292.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "8RtRtEoFtKp0Ud1xQVvYOiVuD4aFWX4M"
+  },
+  {
+    "email": "jdexmlzkqapxsdhkun@nthrl.com",
+    "port": 10425,
+    "host": "redis-10425.c295.ap-southeast-1-1.ec2.cloud.redislabs.com",
+    "password": "MeGRfpHtCACL0YMuJnlupd9zdFNVHvbO"
+  }
+]

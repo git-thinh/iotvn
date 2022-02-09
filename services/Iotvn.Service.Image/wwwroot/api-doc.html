@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>API Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+    <style>
+        body {
+            padding: 40px 0 0 0;
+            margin: 0;
+        }
+
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: inline-block;
+            width: 100%;
+            border-bottom: 1px solid #333;
+            background: #fff;
+            z-index: 99999999999999999;
+            padding: 0 0 0 4px;
+            margin: 0;
+            height: 40px;
+        }
+
+            #header a {
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <h1 id="header"><a href="/" target="_blank">API Document</a> | <a href="/task/jobs/enqueued" target="_blank">Task System</a></h1>
+    <redoc spec-url='/swagger/v1/swagger.json'></redoc>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"></script>
+</body>
+</html>
