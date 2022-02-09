@@ -8,10 +8,6 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ImageMagick;
-using System.Net.Sockets;
-using System.Net;
-using System.Text;
-using StackExchange.Redis;
 
 namespace Iotvn.Service.Image
 {
@@ -55,16 +51,10 @@ namespace Iotvn.Service.Image
 
         const string GS_VERSION_PATH = @"C:\Program Files\gs\gs9.55.0\bin";
 
-        private TcpServer Servidor;
-        private EchoServiceProvider Provider;
         void _init()
         {
             MagickNET.SetGhostscriptDirectory(GS_VERSION_PATH);
             MagickNET.Initialize();
-
-            //Provider = new EchoServiceProvider();
-            //Servidor = new TcpServer(Provider, 15555);
-            //Servidor.Start();
         }
 
         public async Task<byte[]> imageToWebP(Stream stream, int quality = 0, string name = "")
@@ -214,49 +204,5 @@ namespace Iotvn.Service.Image
             return fileList;
         }
 
-    }
-
-    public class EchoServiceProvider : TcpServiceProvider
-    {
-        private string _receivedStr;
-
-        public override object Clone()
-        {
-            return new EchoServiceProvider();
-        }
-
-        public override void OnAcceptConnection(ConnectionState state)
-        {
-            _receivedStr = "";
-            if (!state.Write(Encoding.UTF8.GetBytes("Hello World!\r\n"), 0, 14))
-                state.EndConnection();
-            //if write fails... then close connection
-        }
-
-        public override void OnReceiveData(ConnectionState state)
-        {
-            byte[] buffer = new byte[40];
-            while (state.AvailableData > 0)
-            {
-                int readBytes = state.Read(buffer, 0, 40);
-                if (readBytes > 0)
-                {
-                    _receivedStr += Encoding.UTF8.GetString(buffer, 0, readBytes);
-                    if (_receivedStr.IndexOf("<EOF>") >= 0)
-                    {
-                        state.Write(Encoding.UTF8.GetBytes(_receivedStr), 0,
-                        _receivedStr.Length);
-                        _receivedStr = "";
-                    }
-                }
-                else state.EndConnection();
-                //If read fails then close connection
-            }
-        }
-
-        public override void OnDropConnection(ConnectionState state)
-        {
-            //Nothing to clean here
-        }
     }
 }

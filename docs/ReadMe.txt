@@ -7,7 +7,7 @@ Microsoft.ClearScript.V8.Native.win-x64
 PuppeteerSharp
 
 StackExchange.Redis
-
+Magick.NET-Q16-AnyCPU
 
 Swashbuckle.AspNetCore.SwaggerGen -> Only ReDoc
 

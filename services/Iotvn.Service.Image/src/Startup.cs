@@ -34,8 +34,8 @@ namespace Iotvn.Service.Image
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseStaticFiles();
-            app.UseDirectoryBrowser();
+            //app.UseStaticFiles();
+            //app.UseDirectoryBrowser();
 
             //--------------------------------------------------------
 
